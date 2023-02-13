@@ -1,0 +1,66 @@
+--Must create the table "one" first, after that create "many"--
+--One to one--
+CREATE TABLE A(
+[Khoa] INT PRIMARY KEY, 
+[NoiDung] NVARCHAR(10)
+)
+
+CREATE TABLE b(
+[Khoa] INT UNIQUE NOT NULL, 
+[NoiDung] NVARCHAR(10)
+)
+
+ALTER TABLE b
+ADD CONSTRAINT FK_b_A FOREIGN KEY(Khoa)
+REFERENCES A(Khoa)
+
+--One to many--
+CREATE TABLE A1(
+[Khoa1] INT PRIMARY KEY,
+[NoiDung] NVARCHAR(10)
+)
+
+CREATE TABLE b1(
+[Khoa2] INT PRIMARY KEY,
+[NoiDung] NVARCHAR(10),
+Khoa1 INT,
+FOREIGN KEY (Khoa1) REFERENCES A1(Khoa1)
+)
+
+--Many to many--
+CREATE TABLE A2(
+[Khoa1] INT PRIMARY KEY,
+[NoiDung] NVARCHAR(10)
+)
+
+CREATE TABLE b2(
+[Khoa2] INT PRIMARY KEY,
+[NoiDung] NVARCHAR(10)
+)
+
+CREATE TABLE A2_b2(
+Khoa1 INT NOT NULL REFERENCES A2(Khoa1),
+Khoa2 INT NOT NULL REFERENCES b2(Khoa2),
+PRIMARY KEY (Khoa1, Khoa2)
+)
+
+--Create table with relation--
+CREATE TABLE A3(
+[Khoa1] INT PRIMARY KEY,
+[NoiDung] NVARCHAR(10)
+)
+
+CREATE TABLE b3(
+[Khoa2] INT PRIMARY KEY,
+[NoiDung] NVARCHAR(10)
+)
+
+CREATE TABLE A3_b3(
+[Khoa3] INT,
+[NoiDung] NVARCHAR(10),
+Khoa1 INT,
+Khoa2 INT,
+PRIMARY KEY ([Khoa3], Khoa1, Khoa2),
+FOREIGN KEY (Khoa1) REFERENCES A3(Khoa1),
+FOREIGN KEY (Khoa2) REFERENCES b3(Khoa2)
+)

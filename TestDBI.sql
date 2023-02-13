@@ -1,0 +1,20 @@
+CREATE TABLE Student
+(Roll_No INT PRIMARY KEY,
+Name VARCHAR(50),
+Gender VARCHAR(30),
+Mob_No BIGINT );
+
+INSERT INTO Student
+VALUES (4, 'afzal', 'male', 9876543210)
+
+INSERT INTO Student
+VALUES (3, 'sudhir', 'male', 9675432890)
+
+INSERT INTO Student
+VALUES (5, 'zoya', 'female', 8976453201)
+
+CREATE NONCLUSTERED INDEX NIX_FTE_Name
+ON Student (Name ASC)
+
+SELECT * FROM Student
+
