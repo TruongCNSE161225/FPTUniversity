@@ -1,0 +1,2 @@
+DF traversal all vertices from A:
+A E F G I B C D H 

@@ -1,0 +1,2 @@
+BF traversal from the vertex B:
+B E F G I 

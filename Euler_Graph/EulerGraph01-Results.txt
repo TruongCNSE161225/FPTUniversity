@@ -1,0 +1,1 @@
+Euler cycle from C: C E F H G F G F D C A C B A C 
